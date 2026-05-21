@@ -1,0 +1,48 @@
+{
+  "captions": {
+    "can": [
+      "A large diamond-pattern holographic silver foil contamination patch covering the upper-left portion of the printed grapefruit label on a metal beverage can",
+      "A holographic silver foil diamond-pattern patch on the left combined with a wrong white English advertising text block overprinted across the top of the grapefruit beverage can label",
+      "A mis-registered shifted printed grapefruit label with a slight color shift on the metal beverage can front",
+      "A diamond-pattern holographic silver foil patch in the upper left with a wrong printed nutrition text panel beside it over the grapefruit imagery on the beverage can",
+      "A wrong rotated printed region showing a white English advertising paragraph overprinted across the grapefruit photograph on the metal beverage can",
+      "A block of white English advertising paragraph text overprinted across the lower grapefruit photograph on the printed beverage can label",
+      "A diamond-pattern holographic silver foil patch in the upper left next to a printed nutrition text panel over the grapefruit imagery on the beverage can",
+      "White English advertising paragraph text overprinted across the lower grapefruit photograph on the printed grapefruit beverage can label",
+      "A large holographic silver foil diamond-pattern patch covering the left half of the label next to a printed nutrition text panel on the grapefruit beverage can",
+      "A diamond-pattern holographic silver foil patch in the upper left with a printed nutrition text panel over the grapefruit imagery on the beverage can",
+      "A holographic silver foil diamond-pattern patch in the upper left beside a printed nutrition text panel over the grapefruit imagery on the metal beverage can",
+      "White English advertising paragraph text overprinted across the grapefruit photograph with a small iridescent foil sliver at the lower left of the beverage can label",
+      "A mis-registered grapefruit front label with white advertising paragraph text overprinted across the lower grapefruit photograph on the beverage can",
+      "A shifted mis-registered printed label exposing a metallic holographic foil strip across the top of the grapefruit beverage can",
+      "A large diamond-pattern holographic iridescent foil patch covering the left half next to a printed nutrition text panel over the grapefruit imagery on the beverage can"
+    ]
+  },
+  "sources": {
+    "can": [
+      "test/bad000_regular.png",
+      "test/bad001_regular.png",
+      "test/bad002_regular.png",
+      "test/bad003_regular.png",
+      "test/bad004_regular.png",
+      "test/bad005_regular.png",
+      "test/bad006_regular.png",
+      "test/bad007_regular.png",
+      "test/bad008_regular.png",
+      "test/bad009_regular.png",
+      "test/bad010_regular.png",
+      "test/bad011_regular.png",
+      "test/bad012_regular.png",
+      "test/bad013_regular.png",
+      "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15,
+    "category": "can",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "purpose": "2026-05-21 professor task: whole-can grounded reconstruction t-SNE",
+    "date": "2026-05-21"
+  }
+}

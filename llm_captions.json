@@ -1,0 +1,73 @@
+{
+  "captions": {
+    "can": [
+      "A large diamond-pattern holographic silver foil patch covering the left half of the printed grapefruit label on a metal beverage can",
+      "A holographic silver foil patch combined with wrong overprinted white English product description text on the grapefruit beverage can label",
+      "A mis-aligned rotated printed grapefruit label on the metal beverage can showing the headline upside down",
+      "An iridescent prismatic foil contamination patch stuck on the left side of the printed grapefruit beverage can artwork",
+      "Wrong white English advertising description text overprinted across the grapefruit imagery on the metal beverage can label",
+      "A large white English advertising text block overprinted across the grapefruit photograph on the printed beverage can",
+      "A diamond-pattern holographic foil patch covering the upper left portion of the printed grapefruit beverage can label",
+      "A faded blurred lower portion of the printed grapefruit label with washed-out advertising text on the metal beverage can"
+    ],
+    "fruit_jelly": [
+      "A dark green foreign jelly piece and red fruit chunks floating among normal yellow jelly cubes inside a clear plastic fruit jelly cup",
+      "A dark black foreign contamination piece floating among yellow jelly pieces inside a clear plastic fruit jelly cup",
+      "A small bright red contamination speck suspended inside a clear plastic fruit jelly cup with yellow jelly pieces",
+      "A cloudy under-filled fruit jelly cup with very few jelly pieces visible inside the murky orange-brown liquid",
+      "Excessive foam and bubble layer forming on top of the fruit jelly cup with yellow jelly cubes inside the liquid",
+      "Thin dark hair-like foreign filaments suspended in a clear plastic fruit jelly cup with yellow jelly cubes",
+      "A misshapen bumpy yellow jelly piece resembling coral texture next to a wrong red round fruit piece in a clear plastic fruit jelly cup",
+      "A pink color shift contamination on the left side of the fruit jelly cup with normal yellow jelly cubes visible"
+    ],
+    "walnuts": [
+      "A partially broken-open walnut showing pale beige kernel inside, among many normal closed walnuts on a dark surface",
+      "A clearly broken-open walnut shell with the inner kernel exposed and visible on the right, among whole walnuts on a dark surface",
+      "A slightly opened walnut shell with a sliver of pale kernel visible at the bottom, among normal closed walnuts on a dark surface",
+      "A sparse arrangement of only a few whole walnuts on a dark surface, far fewer than the normal count",
+      "A large half walnut shell on the left showing the dark hollow empty interior, among normal closed walnuts on a dark surface",
+      "Only five whole walnuts scattered sparsely on a dark surface, severely under-filled compared to the normal count",
+      "A loose extracted walnut kernel piece lying on the dark surface next to a few whole closed walnuts",
+      "A small foreign hazelnut mixed in among the normal walnuts on a dark surface"
+    ]
+  },
+  "sources": {
+    "can": [
+      "dataset/mvtec_ad_2/can/test/bad/000_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/001_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/002_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/003_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/004_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/005_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/006_regular.png",
+      "dataset/mvtec_ad_2/can/test/bad/007_regular.png"
+    ],
+    "fruit_jelly": [
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/000_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/001_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/002_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/003_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/004_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/005_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/006_regular.png",
+      "dataset/mvtec_ad_2/fruit_jelly/test/bad/007_regular.png"
+    ],
+    "walnuts": [
+      "dataset/mvtec_ad_2/walnuts/test/bad/000_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/001_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/002_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/003_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/004_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/005_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/006_regular.png",
+      "dataset/mvtec_ad_2/walnuts/test/bad/007_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_per_category": 8,
+    "image_variant_used": "_regular.png (one per unique defect ID)",
+    "purpose": "diagnostic: isolate prompt-vs-generator failure",
+    "date": "2026-05-19"
+  }
+}
