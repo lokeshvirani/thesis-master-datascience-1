@@ -20,6 +20,20 @@ def find_mask(bad_path):
     return stem + "_GT" + ext
 
 
+def resolve_source(cat_dir, source_rel):
+    """Find the real defect image. The JSON uses test/ paths, but some setups
+    keep the same files under train/ instead, so try both folders."""
+    candidates = [source_rel]
+    for a, b in (("test/", "train/"), ("train/", "test/")):
+        if source_rel.startswith(a):
+            candidates.append(b + source_rel[len(a):])
+    for rel in candidates:
+        full = os.path.join(cat_dir, rel)
+        if os.path.exists(full):
+            return full
+    return None
+
+
 def load_captions(captions_json, category):
     """Return (caption, source_path) pairs for `category` from the JSON file."""
     with open(captions_json) as f:
@@ -54,8 +68,10 @@ def main():
     cat_dir = os.path.join(args.src_dir, args.category)
     out_dir = os.path.join(cat_dir, args.out_dirname)
     compare_dir = os.path.join(out_dir, "compare")
+    masks_dir = os.path.join(out_dir, "masks")
     os.makedirs(out_dir, exist_ok=True)
     os.makedirs(compare_dir, exist_ok=True)
+    os.makedirs(masks_dir, exist_ok=True)
 
     # Load the cached captions (each paired with its real-defect image) + good pool.
     pairs = load_captions(args.captions_json, args.category)
@@ -67,20 +83,24 @@ def main():
     pipe = regenerate.load_model(low_vram=args.low_vram)  # the diffusion model
 
     for i, (caption_text, source_rel) in enumerate(pairs):
-        bad_path = os.path.join(cat_dir, source_rel)   # the real defect image
-        mask_path = find_mask(bad_path)                # its GT mask (foo -> foo_GT)
-        if not (os.path.exists(bad_path) and os.path.exists(mask_path)):
-            print(f"[skip] missing files for {source_rel}")
+        bad_path = resolve_source(cat_dir, source_rel)  # real defect (test/ or train/)
+        if bad_path is None:
+            print(f"[skip] real defect not found: {source_rel}")
+            continue
+        mask_path = find_mask(bad_path)                 # its GT mask (foo -> foo_GT)
+        if not os.path.exists(mask_path):
+            print(f"[skip] mask not found for {os.path.basename(bad_path)}")
             continue
 
         good_path = rng.choice(good_images)            # random good base image
         good_image = regenerate.load_good_image(good_path)
         mask = regenerate.load_mask(mask_path)
         generated = regenerate.generate_defect(        # inpaint the captioned defect
-            pipe, good_image, mask, caption_text, seed=args.seed + i)
+            pipe, good_image, mask, caption_text, category=args.category, seed=args.seed + i)
 
         out_path = os.path.join(out_dir, f"{i:04d}.png")
         generated.save(out_path)
+        mask.save(os.path.join(masks_dir, f"{i:04d}_GT.png"))  # save mask for later cropping
         regenerate.save_comparison(                    # good|real|gen strip
             os.path.join(compare_dir, f"{i:04d}.png"), good_image, bad_path, generated)
         print(f"[{i+1}/{len(pairs)}] {source_rel} -> {out_path}")

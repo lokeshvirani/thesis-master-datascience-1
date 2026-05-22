@@ -7,6 +7,7 @@ the generation closed the gap; if they sit apart, it did not.
 """
 import argparse
 import os
+import random
 
 import matplotlib
 matplotlib.use("Agg")           # no display on the server; save to file instead
@@ -40,13 +41,42 @@ def load_feature_extractor():
     return model.to(device)
 
 
+def find_mask(image_path):
+    """GT mask next to a real defect image: foo.png -> foo_GT.png."""
+    stem, ext = os.path.splitext(image_path)
+    return stem + "_GT" + ext
+
+
+def gen_mask_for(gen_path):
+    """Saved mask of a generated image: .../generated/0000.png -> .../masks/0000_GT.png."""
+    folder = os.path.dirname(gen_path)
+    name = os.path.splitext(os.path.basename(gen_path))[0]
+    return os.path.join(folder, "masks", name + "_GT.png")
+
+
+def crop_to_mask(img, mask_path, pad=8):
+    """Crop img to the bounding box of the defect (white area of the mask)."""
+    if mask_path is None or not os.path.exists(mask_path):
+        return img                                 # no mask -> keep whole image
+    mask = np.array(Image.open(mask_path).convert("L").resize(img.size, Image.NEAREST))
+    ys, xs = np.where(mask > 10)                   # pixels that are part of the defect
+    if len(xs) == 0:
+        return img                                 # empty mask -> keep whole image
+    x0, y0, x1, y1 = xs.min(), ys.min(), xs.max(), ys.max()
+    x0, y0 = max(0, x0 - pad), max(0, y0 - pad)    # add a little padding around it
+    x1, y1 = min(img.width, x1 + pad), min(img.height, y1 + pad)
+    return img.crop((x0, y0, x1, y1))
+
+
 @torch.no_grad()
-def embed_images(model, paths):
-    """Turn a list of image paths into an (N, 2048) array of feature vectors."""
+def embed_images(model, paths, masks=None):
+    """Turn image paths into an (N, 2048) array; if masks given, crop to the defect first."""
     device = next(model.parameters()).device   # where the model lives (GPU/CPU)
     vectors = []
-    for path in paths:
+    for i, path in enumerate(paths):
         img = Image.open(path).convert("RGB")
+        if masks is not None:
+            img = crop_to_mask(img, masks[i])            # focus on the defect region
         tensor = TRANSFORM(img).unsqueeze(0).to(device)  # (1, 3, 224, 224) batch of 1
         feat = model(tensor)                             # (1, 2048) feature vector
         vectors.append(feat.cpu().numpy()[0])           # back to CPU, store the 2048 numbers
@@ -84,13 +114,16 @@ def main():
     ap.add_argument("--out", default=None, help="output PNG path (default: in category dir)")
     ap.add_argument("--max_per_group", type=int, default=None,
                     help="cap images per group for speed (default: all)")
+    ap.add_argument("--crop_to_mask", action="store_true",
+                    help="crop each image to its defect region before embedding")
     args = ap.parse_args()
 
     cat_dir = os.path.join(args.src_dir, args.category)
 
-    # 1. collect paths for the three groups
-    real_paths = list_by_label(cat_dir, "test.csv", "positive")
-    normal_paths = list_by_label(cat_dir, "test.csv", "negative")
+    # 1. collect paths for the three groups (use test.csv if present, else train.csv)
+    csv_name = "test.csv" if os.path.exists(os.path.join(cat_dir, "test.csv")) else "train.csv"
+    real_paths = list_by_label(cat_dir, csv_name, "positive")
+    normal_paths = list_by_label(cat_dir, csv_name, "negative")
     gen_paths = list_generated(cat_dir, args.generated_dirname)
     if args.max_per_group:
         real_paths = real_paths[:args.max_per_group]
@@ -102,11 +135,21 @@ def main():
         raise SystemExit(
             "need images in all 3 groups - did you run run_pipeline.py first?")
 
+    # build per-image masks if cropping (real -> own GT, generated -> saved mask,
+    # normal -> a borrowed real mask so the crops are comparable in size)
+    real_masks = gen_masks = normal_masks = None
+    if args.crop_to_mask:
+        rng = random.Random(0)
+        real_masks = [find_mask(p) for p in real_paths]
+        gen_masks = [gen_mask_for(p) for p in gen_paths]
+        usable = [m for m in real_masks if os.path.exists(m)]
+        normal_masks = [rng.choice(usable) for _ in normal_paths]
+
     # 2. embed each group into feature vectors
     model = load_feature_extractor()
-    real_feats = embed_images(model, real_paths)
-    gen_feats = embed_images(model, gen_paths)
-    normal_feats = embed_images(model, normal_paths)
+    real_feats = embed_images(model, real_paths, real_masks)
+    gen_feats = embed_images(model, gen_paths, gen_masks)
+    normal_feats = embed_images(model, normal_paths, normal_masks)
 
     # 3. run t-SNE on all vectors together (so they share one 2-D space)
     all_feats = np.concatenate([real_feats, gen_feats, normal_feats])
@@ -126,9 +169,10 @@ def main():
     plt.scatter(real_xy[:, 0], real_xy[:, 1], c="green", label="real defect", alpha=0.7)
     plt.scatter(gen_xy[:, 0], gen_xy[:, 1], c="orange", label="generated", alpha=0.7)
     plt.legend()
-    plt.title(f"t-SNE: {args.category}")
+    suffix = "_crop" if args.crop_to_mask else ""
+    plt.title(f"t-SNE: {args.category}" + (" (defect crops)" if args.crop_to_mask else ""))
 
-    out = args.out or os.path.join(cat_dir, f"tsne_{args.category}.png")
+    out = args.out or os.path.join(cat_dir, f"tsne_{args.category}{suffix}.png")
     plt.savefig(out, dpi=150, bbox_inches="tight")
     print(f"saved {out}")
 

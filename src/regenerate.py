@@ -32,6 +32,23 @@ NEGATIVE_PROMPT = (
     "heavy blur, distortion, glare"
 )
 
+# Some categories need a different list. `can` defects ARE printed-label issues
+# (holographic foil, overprinted text), so we must NOT forbid text/letters here;
+# instead we forbid physical metal damage, which is the WRONG kind of defect.
+NEGATIVE_PROMPT_BY_CATEGORY = {
+    "can": (
+        "metal dent, scratch, rust, corrosion, hole, puncture, "
+        "cartoon, drawing, illustration, painting, "
+        "extra objects, oversized defect, unrealistic defect shape, "
+        "heavy blur, distortion, glare"
+    ),
+}
+
+
+def negative_prompt_for(category):
+    """Per-category negative prompt, falling back to the default."""
+    return NEGATIVE_PROMPT_BY_CATEGORY.get(category, NEGATIVE_PROMPT)
+
 
 def load_model(low_vram=False):
     """Load the SDXL inpainting model onto the GPU (or CPU if no GPU)."""
@@ -63,7 +80,7 @@ def load_mask(path):
     return mask
 
 
-def generate_defect(pipe, good_image, mask, caption, seed=42):
+def generate_defect(pipe, good_image, mask, caption, category=None, seed=42):
     """Inpaint the defect described by `caption` into the masked area of `good_image`."""
     device = "cuda" if torch.cuda.is_available() else "cpu"
     generator = torch.Generator(device=device).manual_seed(seed)  # fixed seed = repeatable
@@ -72,7 +89,7 @@ def generate_defect(pipe, good_image, mask, caption, seed=42):
 
     result = pipe(
         prompt=full_prompt,             # what defect to paint
-        negative_prompt=NEGATIVE_PROMPT,  # what to avoid drawing
+        negative_prompt=negative_prompt_for(category),  # what to avoid (per category)
         image=good_image,         # the base good image
         mask_image=mask,          # white area = where to paint
         guidance_scale=GUIDANCE,
