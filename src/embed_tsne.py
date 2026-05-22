@@ -122,9 +122,9 @@ def main():
 
     # 4. plot the three groups in three colours
     plt.figure(figsize=(8, 8))
-    plt.scatter(normal_xy[:, 0], normal_xy[:, 1], c="lightgray", label="normal", alpha=0.6)
-    plt.scatter(real_xy[:, 0], real_xy[:, 1], c="red", label="real defect", alpha=0.7)
-    plt.scatter(gen_xy[:, 0], gen_xy[:, 1], c="blue", label="generated", alpha=0.7)
+    plt.scatter(normal_xy[:, 0], normal_xy[:, 1], c="blue", label="normal", alpha=0.6)
+    plt.scatter(real_xy[:, 0], real_xy[:, 1], c="green", label="real defect", alpha=0.7)
+    plt.scatter(gen_xy[:, 0], gen_xy[:, 1], c="orange", label="generated", alpha=0.7)
     plt.legend()
     plt.title(f"t-SNE: {args.category}")
 
