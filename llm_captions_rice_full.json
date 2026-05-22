@@ -1,0 +1,36 @@
+{
+  "captions": {
+    "rice": [
+      "a small translucent blue foreign plastic fragment among the white rice grains",
+      "a small discolored yellowish clump of rice grains among the white rice",
+      "a small brown husk fragment among the white rice grains",
+      "a clump of crushed powdery white rice grains",
+      "a translucent glassy abnormal rice grain among the normal white grains",
+      "a small brown contamination speck among the white rice grains",
+      "a cluster of translucent glassy rice grains differing from the white grains",
+      "scattered small dark specks of contamination among the white rice grains",
+      "a small translucent white-blue foreign fragment among the white rice grains",
+      "a small discolored beige clump among the white rice grains",
+      "a small rounded translucent foreign stone among the white rice grains",
+      "a small brown contamination speck among the white rice grains",
+      "a cluster of broken crushed rice grains among the whole grains",
+      "a chalky white foreign lump among the white rice grains",
+      "a white crystalline foreign fragment among the white rice grains"
+    ]
+  },
+  "sources": {
+    "rice": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15, "category": "rice",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}

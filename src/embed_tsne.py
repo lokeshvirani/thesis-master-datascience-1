@@ -106,6 +106,27 @@ def list_generated(cat_dir, generated_dirname):
             if f.endswith(".png")]            # the compare/ folder is skipped (not a .png)
 
 
+def overlap_score(gen_feats, real_feats, normal_feats, trials=20, seed=0):
+    """Fraction of generated points closer to a real defect than to a normal.
+
+    Computed on the raw 2048-d features (not the t-SNE coords). Normals are
+    subsampled to match the number of real defects so the comparison is fair
+    (otherwise the far more numerous normals win on density alone); averaged
+    over several random subsamples. ~1.0 = generated look like real defects;
+    ~0.0 = they look like normal images."""
+    rng = np.random.default_rng(seed)
+    n = min(len(real_feats), len(normal_feats))
+    dist_to_real = np.array([np.linalg.norm(real_feats - g, axis=1).min()
+                             for g in gen_feats])
+    scores = []
+    for _ in range(trials):
+        sample = normal_feats[rng.choice(len(normal_feats), n, replace=False)]
+        dist_to_normal = np.array([np.linalg.norm(sample - g, axis=1).min()
+                                   for g in gen_feats])
+        scores.append(float(np.mean(dist_to_real < dist_to_normal)))
+    return float(np.mean(scores))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src_dir", default="dataset/preprocessed")
@@ -150,6 +171,11 @@ def main():
     real_feats = embed_images(model, real_paths, real_masks)
     gen_feats = embed_images(model, gen_paths, gen_masks)
     normal_feats = embed_images(model, normal_paths, normal_masks)
+
+    # how often is a generated defect closer to a real defect than to a normal?
+    score = overlap_score(gen_feats, real_feats, normal_feats)
+    print(f"OVERLAP_SCORE {args.category}: {score:.2f}  "
+          f"(1.0 = looks like real defects, 0.0 = looks like normals)")
 
     # 3. run t-SNE on all vectors together (so they share one 2-D space)
     all_feats = np.concatenate([real_feats, gen_feats, normal_feats])

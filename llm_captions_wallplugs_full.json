@@ -1,0 +1,36 @@
+{
+  "captions": {
+    "wallplugs": [
+      "a damaged broken tip on a grey plastic wall plug",
+      "a thin crack or scratch on the body of a grey plastic wall plug",
+      "a worn scuffed patch on a grey plastic wall plug",
+      "a crack line along the body of a grey plastic wall plug",
+      "a broken or missing expansion fin on a grey plastic wall plug",
+      "a bent deformed grey plastic wall plug",
+      "a deformed tip with excess flashing on a grey plastic wall plug",
+      "a dark contamination spot on a grey plastic wall plug",
+      "a bent deformed tip on a grey plastic wall plug",
+      "a damaged tip on a grey plastic wall plug",
+      "a smooth wall plug missing its expansion fins among ribbed plugs",
+      "a small dark hole or pit on a grey plastic wall plug",
+      "a split cracked end on a grey plastic wall plug",
+      "a scuffed worn patch on a grey plastic wall plug",
+      "a deformed melted tip on a grey plastic wall plug"
+    ]
+  },
+  "sources": {
+    "wallplugs": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15, "category": "wallplugs",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "captions": {
+    "walnuts": [
+      "A broken-open walnut showing the pale inner kernel among whole closed walnuts on a dark surface",
+      "A broken-open walnut with the pale inner kernel clearly exposed among whole walnuts on a dark surface",
+      "A walnut with a deep dark crack splitting the shell open among densely packed walnuts on a dark surface",
+      "A sparse arrangement of only a few whole walnuts on a dark surface, far fewer than the normal count",
+      "A half-shell walnut showing the inner cavity and kernel among whole walnuts on a dark surface",
+      "Only five whole walnuts scattered sparsely on a dark surface, severely under-filled",
+      "A loose extracted pale walnut kernel piece lying on the dark surface next to a few whole walnuts",
+      "A small foreign hazelnut mixed in among the normal walnuts on a dark surface",
+      "Two broken-open walnuts showing the pale inner kernels among whole walnuts on a dark surface",
+      "A walnut with a deep dark crack splitting the shell among densely packed walnuts on a dark surface",
+      "A sparse arrangement of only a few whole walnuts on a dark surface, far fewer than the normal count",
+      "A loose extracted pale walnut kernel piece on the dark surface among whole walnuts",
+      "Only five dark overripe walnuts scattered sparsely on a dark surface, under-filled",
+      "A broken-open walnut with the bright inner kernel exposed among whole walnuts on a dark surface",
+      "A cracked walnut with a dark split in the shell among whole walnuts on a dark surface"
+    ]
+  },
+  "sources": {
+    "walnuts": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15,
+    "category": "walnuts",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}

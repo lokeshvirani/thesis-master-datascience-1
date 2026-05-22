@@ -1,0 +1,36 @@
+{
+  "captions": {
+    "sheet_metal": [
+      "an abraded scuffed region disrupting the brushed metal texture",
+      "a vertical scratch band on the brushed sheet metal surface",
+      "a surface texture irregularity on the brushed sheet metal",
+      "a shallow dent depression in the brushed sheet metal surface",
+      "a region of bright scratch marks on the brushed sheet metal",
+      "a vertical scratch band on the brushed sheet metal surface",
+      "a small surface scuff mark on the brushed sheet metal",
+      "a bright scratch gouge on the brushed sheet metal surface",
+      "an abraded region disrupting the brushed metal texture",
+      "a small dent in the brushed sheet metal surface",
+      "a scratched vertical region on the brushed sheet metal",
+      "a small bright contamination speck on the brushed sheet metal",
+      "a small bright pit or particle on the brushed sheet metal surface",
+      "a bright scratch mark on the brushed sheet metal surface",
+      "an abraded scuffed region on the brushed sheet metal surface"
+    ]
+  },
+  "sources": {
+    "sheet_metal": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15, "category": "sheet_metal",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}

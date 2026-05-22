@@ -1,0 +1,37 @@
+{
+  "captions": {
+    "fruit_jelly": [
+      "A dark green-black foreign contamination piece settled at the bottom of a cloudy pinkish fruit jelly drink in a clear plastic cup",
+      "A dark green-black foreign contamination piece floating among yellow jelly pieces in a clear plastic fruit jelly cup",
+      "A small bright red contamination speck suspended among pale jelly cubes in a clear plastic fruit jelly cup",
+      "Murky cloudy pale-brown liquid with very few visible jelly pieces in a clear plastic fruit jelly cup",
+      "An excessive foam and bubble layer at the top of an orange fruit jelly cup with a yellow jelly chunk inside",
+      "An under-filled fruit jelly cup with only a single jelly chunk and very few pieces in the amber liquid",
+      "A cluster of wrong-color green and red jelly pieces suspended in cloudy liquid in a clear plastic fruit jelly cup",
+      "A red wrong-color jelly piece against the cup wall with slightly cloudy amber liquid in a clear plastic fruit jelly cup",
+      "A sparse under-filled fruit jelly cup with only one jelly chunk floating in the amber liquid",
+      "A foam layer and dark contamination specks in pink off-color liquid in a clear plastic fruit jelly cup",
+      "A dark green-black foreign contamination piece among yellow jelly chunks in a clear plastic fruit jelly cup",
+      "Cloudy pink off-color liquid with a small green contamination speck in a clear plastic fruit jelly cup",
+      "Murky cloudy pale-brown liquid obscuring the jelly pieces in a clear plastic fruit jelly cup",
+      "A dark foreign contamination piece and red specks suspended in pink off-color liquid in a clear plastic fruit jelly cup",
+      "A red round wrong fruit piece with a dark speck at the bottom of the pinkish liquid in a clear plastic fruit jelly cup"
+    ]
+  },
+  "sources": {
+    "fruit_jelly": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15,
+    "category": "fruit_jelly",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}

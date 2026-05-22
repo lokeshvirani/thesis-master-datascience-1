@@ -1,0 +1,36 @@
+{
+  "captions": {
+    "vial": [
+      "a dark foreign contamination particle settled at the bottom of the clear plastic vial",
+      "a dark contamination clot near the bottom of the clear plastic vial",
+      "a large dark contamination mass suspended in the clear plastic vial liquid",
+      "a damaged misprinted label and QR code region on the clear plastic vial",
+      "a thin diagonal crack line across the clear plastic vial wall",
+      "an abnormal cluster of foam bubbles in the clear plastic vial liquid",
+      "a region of abnormal ring-shaped droplets on the clear plastic vial wall",
+      "a dark foreign particle against the wall of the clear plastic vial",
+      "an empty under-filled clear plastic vial with little or no liquid content",
+      "an abnormal cluster of streaked bubbles in the clear plastic vial liquid",
+      "a dark contamination particle on the wall of the clear plastic vial",
+      "a dark contamination clot at the bottom tip of the clear plastic vial",
+      "a smeared damaged QR code label on the clear plastic vial",
+      "an excessive cluster of bubbles and foam in the clear plastic vial liquid",
+      "a damaged cap and smeared label at the neck of the clear plastic vial"
+    ]
+  },
+  "sources": {
+    "vial": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15, "category": "vial",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}

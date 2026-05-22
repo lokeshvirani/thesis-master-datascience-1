@@ -1,0 +1,36 @@
+{
+  "captions": {
+    "fabric": [
+      "a thin worn patch where the printed pattern is faded and missing on the green floral fabric",
+      "a dark blue-green stain discoloration on the printed floral fabric",
+      "a small faint grey smudge mark on the printed floral fabric",
+      "a small reddish-brown contamination stain on the printed floral fabric",
+      "a distorted puckered region where the woven floral pattern is disrupted on the fabric",
+      "a thin diagonal cut scratch line across the woven floral fabric",
+      "a pale bleached worn spot on the printed floral fabric",
+      "a small thread pull disrupting the printed pattern on the floral fabric",
+      "a dark stain discoloration on the printed floral fabric",
+      "a red foreign thread lying across the printed floral fabric",
+      "a faint discolored worn region on the printed floral fabric",
+      "a pale bleached worn spot on the printed floral fabric",
+      "a small thin worn patch with sparse missing pattern on the floral fabric",
+      "a dark round stain on the printed floral fabric",
+      "a dark contamination stain blob on the printed floral fabric"
+    ]
+  },
+  "sources": {
+    "fabric": [
+      "test/bad000_regular.png", "test/bad001_regular.png", "test/bad002_regular.png",
+      "test/bad003_regular.png", "test/bad004_regular.png", "test/bad005_regular.png",
+      "test/bad006_regular.png", "test/bad007_regular.png", "test/bad008_regular.png",
+      "test/bad009_regular.png", "test/bad010_regular.png", "test/bad011_regular.png",
+      "test/bad012_regular.png", "test/bad013_regular.png", "test/bad014_regular.png"
+    ]
+  },
+  "metadata": {
+    "captioner": "vision-language model",
+    "n_captions": 15, "category": "fabric",
+    "image_variant_used": "_regular.png (one per distinct defect ID bad000-bad014)",
+    "date": "2026-05-21"
+  }
+}
